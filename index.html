@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Transformation Tracker</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>🌟 Your Daily Transformation Journey 🌟</h1>
+            <p>One step at a time, one day at a time</p>
+        </div>
+        
+        <!-- Daily Quote -->
+        <div class="daily-quote" id="dailyQuote">
+            <h3>"The journey of a thousand miles begins with one step." - Lao Tzu</h3>
+        </div>
+        
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="streakCount">0</div>
+                <div>Day Streak</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completedHabits">0</div>
+                <div>Habits Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalPoints">0</div>
+                <div>Total Points</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="currentTime">00:00</div>
+                <div>Current Time</div>
+            </div>
+        </div>
+        
+        <!-- Main Habits Grid -->
+        <div class="main-grid">
+            <div class="time-block">
+                <div class="block-header">
+                    <span class="block-icon">💪</span>
+                    <div>
+                        <div class="block-title">Self-Improvement Block</div>
+                        <div class="time-display">8 Hours Daily</div>
+                    </div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'workout', 25)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">Morning Workout (30-60 min)</div>
+                    <div class="habit-reward">+25 pts</div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'reading', 20)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">Daily Reading (30 min)</div>
+                    <div class="habit-reward">+20 pts</div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'upskill', 30)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">Skill Development (1-2 hours)</div>
+                    <div class="habit-reward">+30 pts</div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'meditation', 15)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">Mindfulness/Meditation (15 min)</div>
+                    <div class="habit-reward">+15 pts</div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'planning', 10)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">Daily Planning & Reflection</div>
+                    <div class="habit-reward">+10 pts</div>
+                </div>
+            </div>
+            
+            <div class="time-block">
+                <div class="block-header">
+                    <span class="block-icon">❤️</span>
+                    <div>
+                        <div class="block-title">Self-Love & Wellness</div>
+                        <div class="time-display">Throughout Day</div>
+                    </div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'water', 10)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">Drink 8 glasses of water</div>
+                    <div class="habit-reward">+10 pts</div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'gratitude', 15)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">Write 3 things I'm grateful for</div>
+                    <div class="habit-reward">+15 pts</div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'selfcare', 20)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">One act of self-care</div>
+                    <div class="habit-reward">+20 pts</div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'nutrition', 15)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">Eat one healthy meal</div>
+                    <div class="habit-reward">+15 pts</div>
+                </div>
+                
+                <div class="habit-item" onclick="toggleHabit(this, 'positivity', 10)">
+                    <div class="habit-checkbox"></div>
+                    <div class="habit-text">Practice positive self-talk</div>
+                    <div class="habit-reward">+10 pts</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Progress Section -->
+        <div class="progress-section">
+            <h2>Daily Progress</h2>
+            <div class="streak-counter">
+                <h3>🔥 Current Streak: <span id="streakDisplay">0</span> Days</h3>
+                <p>Keep going! You're building unstoppable momentum!</p>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%">0%</div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn" onclick="resetDay()">Reset Day</button>
+                <button class="btn" onclick="showMotivation()">Need Motivation?</button>
+                <button class="btn" onclick="completeDay()">Complete Day</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Reminder System -->
+    <div class="reminder-system" id="reminderSystem">
+        <h3>⏰ Gentle Reminder</h3>
+        <p id="reminderText">Time for your next habit!</p>
+        <button class="btn" onclick="dismissReminder()">Got it!</button>
+    </div>
+    
+    <!-- Motivational Popup -->
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="motivational-popup" id="motivationalPopup">
+        <div class="celebration" id="celebrationIcon">🎉</div>
+        <h2 id="popupTitle">Amazing Work!</h2>
+        <p id="popupMessage">You're becoming the person you want to be!</p>
+        <button class="btn" onclick="closePopup()">Continue Journey</button>
+    </div>
+    
+    <!-- JavaScript Files -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/habits.js"></script>
+    <script src="assets/js/reminders.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

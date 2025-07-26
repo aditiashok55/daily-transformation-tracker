@@ -1,0 +1,40 @@
+{
+  "name": "daily-transformation-tracker",
+  "version": "1.0.0",
+  "description": "A gamified habit tracker based on behavioral psychology principles",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python3 -m http.server 8000",
+    "lint": "eslint assets/js/",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/daily-transformation-tracker.git"
+  },
+  "keywords": [
+    "habits",
+    "productivity",
+    "self-improvement",
+    "gamification",
+    "psychology",
+    "tracker",
+    "atomic-habits",
+    "personal-development"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/daily-transformation-tracker/issues"
+  },
+  "homepage": "https://github.com/yourusername/daily-transformation-tracker#readme",
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
